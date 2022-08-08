@@ -3,13 +3,14 @@ import { StarIcon } from '@chakra-ui/icons';
 import { Image } from '@chakra-ui/react';
 import Link from 'next/link';
 
-const Property = ({ renting, property: { coverPhoto, rooms, title, baths, score_l1, price, randBoostScore, externalId } }) => (
-    <Link href={`/property/${externalId}`} passHref>
+const Property = ({ renting, property: { coverPhoto, rooms, title, baths, score_l1, price, randBoostScore, externalID } }) => (
+    <Link href={`/property/${externalID}`} passHref >
         <Box
             bg="white"
             _dark={{ bg: "gray.800" }}
             maxW="sm"
             borderWidth="1px"
+            roundedTop="md"
             padding={23}
             shadow="lg"
             style={{ cursor: 'pointer' }}
@@ -23,7 +24,7 @@ const Property = ({ renting, property: { coverPhoto, rooms, title, baths, score_
 
             <Box p="6">
                 <Box display="flex" alignItems="baseline">
-                    <Badge rounded="full" px="2" colorScheme="teal">
+                    <Badge rounded="full" px="2" colorScheme="red">
                         New
                     </Badge>
                     <Box
@@ -45,10 +46,6 @@ const Property = ({ renting, property: { coverPhoto, rooms, title, baths, score_
                     lineHeight="tight"
                     noOfLines={1}
                 >
-                    {title}
-                </Text>
-
-                <Box>
                     $ {(price / 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
 
                     {renting &&
@@ -57,6 +54,10 @@ const Property = ({ renting, property: { coverPhoto, rooms, title, baths, score_
                         </Box>
                     }
 
+                </Text>
+
+                <Box>
+                    {title}
                 </Box>
 
                 <Box display="flex" mt="2" alignItems="center">
@@ -65,7 +66,7 @@ const Property = ({ renting, property: { coverPhoto, rooms, title, baths, score_
                         .map((_, i) => (
                             < StarIcon
                                 key={i}
-                                color={i < (randBoostScore / 100 - 3) ? "teal.500" : "gray.300"}
+                                color={i < (randBoostScore / 100 - 3) ? "red.500" : "gray.300"}
                             />
                         ))}
                     <Box as="span" ml="2" color="gray.600" fontSize="sm">
