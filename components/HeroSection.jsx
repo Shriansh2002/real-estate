@@ -11,6 +11,8 @@ import {
 	IconButton,
 	useColorModeValue,
 } from '@chakra-ui/react';
+import { Link } from "react-scroll";
+import { AiOutlineArrowRight } from 'react-icons/ai';
 
 export default function CallToActionWithVideo() {
 	return (
@@ -51,16 +53,26 @@ export default function CallToActionWithVideo() {
 					<Stack
 						spacing={{ base: 4, sm: 6 }}
 						direction={{ base: 'column', sm: 'row' }}>
-						<Button
-							rounded={'full'}
-							size={'lg'}
-							fontWeight={'normal'}
-							px={6}
-							colorScheme={'red'}
-							bg={'red.400'}
-							_hover={{ bg: 'red.500' }}>
-							Get started
-						</Button>
+						<Link
+							activeClass="active"
+							to="rental-section"
+							spy={true}
+							smooth={true}
+							offset={-70}
+							duration={500}
+						>
+							<Button
+								rounded={'full'}
+								size={'lg'}
+								fontWeight={'normal'}
+								px={6}
+								colorScheme={'red'}
+								bg={'red.400'}
+								_hover={{ bg: 'red.500' }}>
+								Get started &nbsp;
+								<AiOutlineArrowRight />
+							</Button>
+						</Link>
 						<Button
 							rounded={'full'}
 							size={'lg'}
@@ -116,7 +128,7 @@ export default function CallToActionWithVideo() {
 					</Box>
 				</Flex>
 			</Stack>
-		</Container>
+		</Container >
 	);
 }
 

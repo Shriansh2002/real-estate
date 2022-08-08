@@ -37,6 +37,7 @@ const Home = ({ propertiesForSale, propertiesForRent }) => (
       buttonText='Explore Renting'
       linkName='/search?purpose=for-rent'
       imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4'
+      passedId="rental-section"
     />
 
     <Flex flexWrap='wrap' justifyContent='center' gap={5}>
@@ -51,6 +52,7 @@ const Home = ({ propertiesForSale, propertiesForRent }) => (
       buttonText='Explore Buying'
       linkName='/search?purpose=for-sale'
       imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008'
+      passedId="sale-section"
     />
     <Flex flexWrap='wrap' justifyContent='center' gap={5}>
       {propertiesForSale.map((property) => <Property property={property} key={property.id} />)}
