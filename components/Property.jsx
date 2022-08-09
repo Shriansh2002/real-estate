@@ -3,7 +3,7 @@ import { StarIcon } from '@chakra-ui/icons';
 import { Image } from '@chakra-ui/react';
 import Link from 'next/link';
 
-const Property = ({ renting, property: { coverPhoto, rooms, title, baths, score_l1, price, randBoostScore, externalID } }) => (
+const Property = ({ property: { coverPhoto, rooms, title, baths, score_l1, price, randBoostScore, rentFrequency, externalID } }) => (
     <Link href={`/property/${externalID}`} passHref >
         <Box
             bg="white"
@@ -46,14 +46,9 @@ const Property = ({ renting, property: { coverPhoto, rooms, title, baths, score_
                     lineHeight="tight"
                     noOfLines={1}
                 >
-                    $ {(price / 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-
-                    {renting &&
-                        <Box as="span" color="gray.600" fontSize="sm">
-                            / wk
-                        </Box>
-                    }
-
+                    AED
+                    {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    {rentFrequency && `/${rentFrequency}`}
                 </Text>
 
                 <Box>
@@ -66,7 +61,7 @@ const Property = ({ renting, property: { coverPhoto, rooms, title, baths, score_
                         .map((_, i) => (
                             < StarIcon
                                 key={i}
-                                color={i < (randBoostScore / 100 - 3) ? "red.500" : "gray.300"}
+                                color={i < (randBoostScore / 100) ? "red.500" : "gray.300"}
                             />
                         ))}
                     <Box as="span" ml="2" color="gray.600" fontSize="sm">
