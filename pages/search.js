@@ -24,9 +24,9 @@ const Search = ({ properties }) => {
                 fontSize='lg'
                 justifyContent='center'
                 alignItems='center'
-                onClick={() => setSearchFilters((ps) => !ps)}
+                onClick={() => setSearchFilters(!searchFilters)}
             >
-                <Text>Search Property by Filters</Text>
+                <Text>Search Property By Filters</Text>
                 <Icon paddingLeft='2' w='7' as={BsFilter} />
             </Flex>
 
