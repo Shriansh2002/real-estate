@@ -1,9 +1,10 @@
-import { Box, Text, Badge } from '@chakra-ui/layout';
+import { Box, Text, Badge, Flex } from '@chakra-ui/layout';
 import { StarIcon } from '@chakra-ui/icons';
 import { Image } from '@chakra-ui/react';
 import Link from 'next/link';
+import { GoVerified } from 'react-icons/go';
 
-const Property = ({ property: { coverPhoto, rooms, title, baths, score_l1, price, randBoostScore, rentFrequency, externalID } }) => (
+const Property = ({ property: { coverPhoto, rooms, isVerified, title, baths, score_l1, price, randBoostScore, rentFrequency, externalID } }) => (
     <Link href={`/property/${externalID}`} passHref >
         <Box
             bg="white"
@@ -35,7 +36,10 @@ const Property = ({ property: { coverPhoto, rooms, title, baths, score_l1, price
                         textTransform="uppercase"
                         ml="2"
                     >
-                        {rooms} Rooms &bull; {baths} baths
+                        <Flex alignItems='center' justifyContent='center'>
+                            {rooms} Rooms &bull; {baths} baths &nbsp;
+                            <Box color='green.400'>{isVerified && <GoVerified />}</Box>
+                        </Flex>
                     </Box>
                 </Box>
 
